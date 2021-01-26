@@ -9,14 +9,14 @@
   </url>
   
   <url>
-    <loc>https://sonky.top/tags/index.html</loc>
+    <loc>https://sonky.top/categories/index.html</loc>
     
     <lastmod>2021-01-26</lastmod>
     
   </url>
   
   <url>
-    <loc>https://sonky.top/categories/index.html</loc>
+    <loc>https://sonky.top/tags/index.html</loc>
     
     <lastmod>2021-01-26</lastmod>
     
@@ -100,14 +100,14 @@
   </url>
   
   <url>
-    <loc>https://sonky.top/1fb7cb45/</loc>
+    <loc>https://sonky.top/f274fc39/</loc>
     
     <lastmod>2021-01-26</lastmod>
     
   </url>
   
   <url>
-    <loc>https://sonky.top/f274fc39/</loc>
+    <loc>https://sonky.top/1fb7cb45/</loc>
     
     <lastmod>2021-01-26</lastmod>
     
@@ -142,14 +142,14 @@
   </url>
   
   <url>
-    <loc>https://sonky.top/1ebe501c/</loc>
+    <loc>https://sonky.top/29d24fe4/</loc>
     
     <lastmod>2021-01-26</lastmod>
     
   </url>
   
   <url>
-    <loc>https://sonky.top/29d24fe4/</loc>
+    <loc>https://sonky.top/1ebe501c/</loc>
     
     <lastmod>2021-01-26</lastmod>
     
@@ -166,20 +166,6 @@
   
   <url>
     <loc>https://sonky.top/tags/tool/</loc>
-    <lastmod>2021-01-26</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://sonky.top/tags/conan/</loc>
-    <lastmod>2021-01-26</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://sonky.top/tags/C/</loc>
     <lastmod>2021-01-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -207,6 +193,20 @@
   </url>
   
   <url>
+    <loc>https://sonky.top/tags/conan/</loc>
+    <lastmod>2021-01-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://sonky.top/tags/C/</loc>
+    <lastmod>2021-01-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://sonky.top/tags/Hexo/</loc>
     <lastmod>2021-01-26</lastmod>
     <changefreq>daily</changefreq>
@@ -221,7 +221,7 @@
   </url>
   
   <url>
-    <loc>https://sonky.top/tags/%E7%BC%96%E7%A8%8B/</loc>
+    <loc>https://sonky.top/tags/wsl/</loc>
     <lastmod>2021-01-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -235,7 +235,7 @@
   </url>
   
   <url>
-    <loc>https://sonky.top/tags/wsl/</loc>
+    <loc>https://sonky.top/tags/%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2021-01-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
