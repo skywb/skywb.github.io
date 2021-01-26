@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+    <meta name="description" content="个人博客">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    Conan使用入门 |
+    
+    -sky-</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="-sky-" type="application/atom+xml">
+</head>
+
+<body>
+<main class="content">
+  <section class="outer">
+  
+
+<article id="post-Conan使用入门" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Conan使用入门
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/1ebe501c/" class="article-date">
+  <time datetime="2020-04-10T05:31:59.000Z" itemprop="datePublished">2020-04-10</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tool/">tool</a>
+  </div>
+
+      </div>
+    
+
+    
+      
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+        <h2 id="tl-dr"><a href="#tl-dr" class="headerlink" title="tl;dr"></a>tl;dr</h2><p>Conan 是C++的一个包管理工具，使得C++安装第三方库变的很方便。 类似于vs的NuGet</p>
+<p>Conan的基本命令：</p>
+<ul>
+<li><p>查找库： <code>conan search poco --remote=conan-center</code></p>
+</li>
+<li><p>安装库：<code>conan inspect poco/1.9.4</code></p>
+</li>
+<li><p>安装到项目：<code>conan install ..</code></p>
+</li>
+<li><p>conanfile.txt样例：</p>
+  <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[requires]</span><br><span class="line">poco/1.9.4</span><br><span class="line"></span><br><span class="line">[generators]</span><br><span class="line">cmake</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CMakeLists.txt 插入内容：</p>
+  <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">include</span>(<span class="variable">$&#123;CMAKE_BINARY_DIR&#125;</span>/conanbuildinfo.cmake)</span><br><span class="line">conan_basic_setup()</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<a id="more"></a>
+
+
+
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>conan 依赖python，因此需要安装python， 最好是安装python3</p>
+<p>然后使用命令安装即可</p>
+<p><code>pip install conan</code></p>
+<p>如果找不到pip命令， 一种原因是没有安装python，另一种是没将pip路径添加到path</p>
+<p>自己还遇到了一种情况就是，在windows下，使用pip安装了之后，能找到这个程序，却找不多conan命令，就是找不到conan.exe可执行程序</p>
+<p>这种情况一般是没将pip安装后的可执行程序的目录添加到path里， 用everything搜一下conan.exe在哪，把路径添加进去就好了。</p>
+<h2 id="包管理"><a href="#包管理" class="headerlink" title="包管理"></a>包管理</h2><p>官方文档中给出了一个项目demo， 顺便借助这个demo记录一下基本的使用。</p>
+<h3 id="查找本地库"><a href="#查找本地库" class="headerlink" title="查找本地库"></a>查找本地库</h3><p><code>conan search</code>   可以查看本地已经缓存过的库有哪些</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Existing package recipes:</span><br><span class="line"></span><br><span class="line">boost/1.69.0</span><br><span class="line">bzip2/1.0.8</span><br><span class="line">openssl/1.0.2t</span><br><span class="line">poco/1.10.0</span><br><span class="line">zlib/1.2.11</span><br></pre></td></tr></table></figure>
+
+<p>以上是执行后的结果，安装有五个库， <code>/</code> 后面表示版本号</p>
+<h3 id="查找远程库"><a href="#查找远程库" class="headerlink" title="查找远程库"></a>查找远程库</h3><p>如果只是使用search则是在本地查找，如果版本可以接受可以直接用，避免总是从网上缓存过多的版本。</p>
+<p><code>conan search poco --remote=conan-center</code>  </p>
+<p>通过 <code>--remote</code> 参数指定源， <code>conan-center</code>则是conan的官方库，里面有大部分库的封装。 如果使用个人的或其他的源，指定地址即可。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> conan search poco --remote=conan-center</span></span><br><span class="line">Existing package recipes:</span><br><span class="line"></span><br><span class="line">poco/1.8.1</span><br><span class="line">poco/1.9.3</span><br><span class="line">poco/1.9.4</span><br></pre></td></tr></table></figure>
+
+<p>显示有多个版本，可以选择一个安装。</p>
+<h3 id="安装远程的库"><a href="#安装远程的库" class="headerlink" title="安装远程的库"></a>安装远程的库</h3><p><code>conan inspect poco/1.9.4</code></p>
+<p>通过此命令安装1.9.4版本的poco库， 等待执行结束即可。</p>
+<p>这个时候如果再从本地查找就能找到这个库了。</p>
+<h3 id="删除库"><a href="#删除库" class="headerlink" title="删除库"></a>删除库</h3><p><code>conan remove poco/1.9.4</code></p>
+<p>会给予确认提示，确认后就可以删除了。</p>
+<h2 id="项目编译"><a href="#项目编译" class="headerlink" title="项目编译"></a>项目编译</h2><h3 id="项目配置"><a href="#项目配置" class="headerlink" title="项目配置"></a>项目配置</h3><p>官方给出的demo代码</p>
+<p>Demo.cpp</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"Poco/MD5Engine.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"Poco/DigestStream.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>** argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Poco::MD5Engine md5;</span><br><span class="line">    <span class="function">Poco::DigestOutputStream <span class="title">ds</span><span class="params">(md5)</span></span>;</span><br><span class="line">    ds &lt;&lt; <span class="string">"abcdefghijklmnopqrstuvwxyz"</span>;</span><br><span class="line">    ds.<span class="built_in">close</span>();</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; Poco::DigestEngine::digestToHex(md5.digest()) &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>也可以从github上直接拉取</p>
+<p><code>git clone https://github.com/conan-io/examples.git &amp;&amp; cd examples/libraries/poco/md5</code></p>
+</blockquote>
+<p>然后我们需要在项目路径添加一个<code>conanfile.txt</code>文件， 文件内主要记录conan的配置，依赖的库，版本，以及生成工具等等。</p>
+<p><strong>conanfile.txt</strong></p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[requires]</span><br><span class="line">poco/1.9.4</span><br><span class="line"></span><br><span class="line">[generators]</span><br><span class="line">cmake</span><br></pre></td></tr></table></figure>
+
+<p>构建工具使用cmake</p>
+<h3 id="指定编译器版本信息"><a href="#指定编译器版本信息" class="headerlink" title="指定编译器版本信息"></a>指定编译器版本信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ conan profile update settings.compiler.libcxx&#x3D;libstdc++11 default  # Sets libcxx to C++11 ABI</span><br></pre></td></tr></table></figure>
+
+<p>指定使用C++11编译</p>
+<h3 id="安装库"><a href="#安装库" class="headerlink" title="安装库"></a>安装库</h3><p>例如我们需要构建到build目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mkdir build &amp;&amp; <span class="built_in">cd</span> build</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> conan install ..</span></span><br></pre></td></tr></table></figure>
+
+<p>当我们使用 <code>install</code>之后，就会生成一个<code>conanbuildinfo.cmake</code>文件，文件里面主要是将库依赖，我们需要将这个文件写到我们项目的<code>CMakeLists.txt</code>里面</p>
+<p><strong>CMakeLists.txt</strong></p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">2.8</span>.<span class="number">12</span>)</span><br><span class="line"><span class="keyword">project</span>(MD5Encrypter)</span><br><span class="line"></span><br><span class="line"><span class="keyword">add_definitions</span>(<span class="string">"-std=c++11"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">include</span>(<span class="variable">$&#123;CMAKE_BINARY_DIR&#125;</span>/conanbuildinfo.cmake)</span><br><span class="line">conan_basic_setup()</span><br><span class="line"></span><br><span class="line"><span class="keyword">add_executable</span>(Demo Demo.cpp)</span><br><span class="line"><span class="keyword">target_link_libraries</span>(Demo <span class="variable">$&#123;CONAN_LIBS&#125;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>此时项目就配置好了。</p>
+<h3 id="编译运行"><a href="#编译运行" class="headerlink" title="编译运行"></a>编译运行</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(win)</span><br><span class="line"><span class="meta">$</span><span class="bash"> cmake .. -G <span class="string">"Visual Studio 16"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> cmake --build . --config Release</span></span><br><span class="line"></span><br><span class="line">(linux, mac)</span><br><span class="line"><span class="meta">$</span><span class="bash"> cmake .. -G <span class="string">"Unix Makefiles"</span> -DCMAKE_BUILD_TYPE=Release</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> cmake --build .</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">[100%</span><span class="bash">] Built target Demo</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ./bin/Demo</span></span><br><span class="line">c3fcd3d76192e4007dfb496cca67e13b</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="关于头文件"><a href="#关于头文件" class="headerlink" title="关于头文件"></a>关于头文件</h3><p>如果使用了ide或者ls， 在项目中直接使用 “” 包含头文件即可。</p>
+<h2 id="上传自己的包"><a href="#上传自己的包" class="headerlink" title="上传自己的包"></a>上传自己的包</h2><p>TODO: 目前还没用到，需要的时候再补充   需要的可以阅读下方参考连接里面的官方文档。</p>
+<h2 id="搭建私有服务器"><a href="#搭建私有服务器" class="headerlink" title="搭建私有服务器"></a>搭建私有服务器</h2><p>TODO: 目前还没用到，需要的时候再补充</p>
+<h2 id="参考连接："><a href="#参考连接：" class="headerlink" title="参考连接："></a>参考连接：</h2><ul>
+<li><a href="https://docs.conan.io/en/latest/installation.html" target="_blank" rel="noopener">官方文档</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sonky.top/1ebe501c/" data-id="ckkdwv0w30002m9pefv0b0tqv"
+         class="article-share-link">Share</a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/conan/" rel="tag">conan</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tool/" rel="tag">tool</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+    
+      <a href="/95e6964/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title">vscode+wsl编译调试C++工程</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  <div class="gitalk" id="gitalk-container"></div>
+  
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '731d296ff6b02332f282',
+      clientSecret: '69040a6c46c495ad968ac52f4e46b2a172e05b42',
+      repo: 'skywb.github.io',
+      owner: 'skywb',
+      admin: ['skywb'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+  
+
+</article>
+
+<style>
+.mydivinarticle {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	opacity: 0.9;
+	border:solid 1px black;
+	width:162px;
+	height: 36px;
+	margin:20px auto;
+	text-align: center;
+	color: #000;
+	background:  #FFF;
+	line-height: 34px;
+	font-weight: bold;
+}
+</style>
+
+
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2021 -sky-</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean" target="_blank" rel="noopener">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+
+<aside class="sidebar sidebar-specter">
+  
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="-sky-"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/talk">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/categories">Categories</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/tags">Tag</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+  <script>
+	  (function(){
+	   var bp = document.createElement('script');
+	   var curProtocol = window.location.protocol.split(':')[0];
+	   if (curProtocol === 'https') {
+	   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+	   }
+	   else {
+	   bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	   }
+	   var s = document.getElementsByTagName("script")[0];
+	   s.parentNode.insertBefore(bp, s);
+	   })();
+  </script>
+
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+</body>
+</html>

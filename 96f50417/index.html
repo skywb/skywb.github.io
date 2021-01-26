@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+    <meta name="description" content="个人博客">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    bash on win10 半透明效果及缓冲区大小设置 |
+    
+    -sky-</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="-sky-" type="application/atom+xml">
+</head>
+
+<body>
+<main class="content">
+  <section class="outer">
+  
+
+<article id="post-bash-on-win10-半透明效果及缓冲区大小设置" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      bash on win10 半透明效果及缓冲区大小设置
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/96f50417/" class="article-date">
+  <time datetime="2018-02-09T04:59:58.000Z" itemprop="datePublished">2018-02-09</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tool/">tool</a>
+  </div>
+
+      </div>
+    
+
+    
+      
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+        <p>一、bash半透明效果设置</p>
+<p>先来两张效果图</p>
+<p><img src="/96f50417/20180209124830981.png" alt="img"> </p>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p><img src="/96f50417/20180209124947571.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<a id="more"></a>
+
+<p>这样写代码是不是少了点枯燥多了点享受呢<del>.</del></p>
+<p>怎么弄得呢?</p>
+<p>首先设置窗口的半透明:(右键窗口上边框就可以, 里面有个默认值这个是永久设置, 还有个属性, 这个是只是本次设置有效,重新打开窗口就没了)</p>
+<p><img src="/96f50417/20180209125115397.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>然后其他字体, 以及窗口的大小自己根据显示的大小设置即可.</p>
+<p>还有个问题就是如果使用了桌面写真,  不能使用窗口最大化,  如果最大化, 音乐的歌词就停了.  所以设置的窗口大一点, 打开就跟全屏差不多, 但是这是窗口化.</p>
+<h3 id="二、缓冲区大小设置"><a href="#二、缓冲区大小设置" class="headerlink" title="二、缓冲区大小设置"></a>二、缓冲区大小设置</h3><p>当使用bash的时候设置缓冲区大小不仅仅是bash.rc 文件了, 还与windows窗口设置有关, 如果你有很多, 窗口不然看白搭.</p>
+<p>设置窗口能显示的条数:</p>
+<p>跟之前设置一样, 打开窗口默认值设置, 选择布局, 然后屏幕缓冲区大小的高度就是能显示的行数.</p>
+<p><img src="/96f50417/20180209125526649.png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sonky.top/96f50417/" data-id="ckkdwv0wg000km9peeprq1cif"
+         class="article-share-link">Share</a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wsl/" rel="tag">wsl</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/b148353a/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer posts</strong>
+        <div class="article-nav-title">
+          
+            安装STL的man文档
+          
+        </div>
+      </a>
+    
+    
+  </nav>
+
+
+  
+
+  
+    
+  <div class="gitalk" id="gitalk-container"></div>
+  
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '731d296ff6b02332f282',
+      clientSecret: '69040a6c46c495ad968ac52f4e46b2a172e05b42',
+      repo: 'skywb.github.io',
+      owner: 'skywb',
+      admin: ['skywb'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+  
+
+</article>
+
+<style>
+.mydivinarticle {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	opacity: 0.9;
+	border:solid 1px black;
+	width:162px;
+	height: 36px;
+	margin:20px auto;
+	text-align: center;
+	color: #000;
+	background:  #FFF;
+	line-height: 34px;
+	font-weight: bold;
+}
+</style>
+
+
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2021 -sky-</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean" target="_blank" rel="noopener">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+
+<aside class="sidebar sidebar-specter">
+  
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="-sky-"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/talk">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/categories">Categories</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/tags">Tag</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+  <script>
+	  (function(){
+	   var bp = document.createElement('script');
+	   var curProtocol = window.location.protocol.split(':')[0];
+	   if (curProtocol === 'https') {
+	   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+	   }
+	   else {
+	   bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	   }
+	   var s = document.getElementsByTagName("script")[0];
+	   s.parentNode.insertBefore(bp, s);
+	   })();
+  </script>
+
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+</body>
+</html>

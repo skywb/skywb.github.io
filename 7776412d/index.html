@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+    <meta name="description" content="个人博客">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    Linux常用技巧 |
+    
+    -sky-</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="-sky-" type="application/atom+xml">
+</head>
+
+<body>
+<main class="content">
+  <section class="outer">
+  
+
+<article id="post-Linux常用技巧" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux常用技巧
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/7776412d/" class="article-date">
+  <time datetime="2019-09-14T12:51:49.000Z" itemprop="datePublished">2019-09-14</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux%E5%9F%BA%E7%A1%80/">Linux基础</a>
+  </div>
+
+      </div>
+    
+
+    
+      
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+        <p>摘要：</p>
+<p>​    在Linux下的一些常用的命令， 例如：</p>
+<pre><code>- 快捷键
+- whatis
+- 文件操作
+- 磁盘操作等 
+- 进程等</code></pre><a id="more"></a>
+
+<h2 id="一-终端快捷键"><a href="#一-终端快捷键" class="headerlink" title="一. 终端快捷键"></a>一. 终端快捷键</h2><h2 id="二-简单命令的使用"><a href="#二-简单命令的使用" class="headerlink" title="二. 简单命令的使用"></a>二. 简单命令的使用</h2><h3 id="2-1-帮助类命令"><a href="#2-1-帮助类命令" class="headerlink" title="2.1 帮助类命令"></a>2.1 帮助类命令</h3><ul>
+<li><p><code>whatis</code>       查看命令的简要说明</p>
+<ul>
+<li>基本使用<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whatis command</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>正则匹配</p>
+<pre><code><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whatis -w "loca*"</span><br></pre></td></tr></table></figure></code></pre></li>
+<li><p><code>man</code>   说明文档</p>
+<ul>
+<li><p>基本使用 </p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man command</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>man 手册的分类</p>
+<p>  使用方式  <code>man [1-9] command</code></p>
+<p>  (1)、用户可以操作的命令或者是可执行文件<br>  (2)、系统核心可调用的函数与工具等<br>  (3)、一些常用的函数与数据库<br>  (4)、设备文件的说明<br>  (5)、设置文件或者某些文件的格式<br>  (6)、游戏<br>  (7)、惯例与协议等。例如Linux标准文件系统、网络协议、ASCⅡ，码等说明内容<br>  (8)、系统管理员可用的管理条令<br>  (9)、与内核有关的文件</p>
+</li>
+</ul>
+</li>
+<li><p><code>which / whereis</code> 查看路径</p>
+<ul>
+<li><p>查找二进制文件的路径    <em>需要在path路径中</em></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which command</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看程序的搜索路径</p>
+   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whereis command</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-2-文件及目录管理"><a href="#2-2-文件及目录管理" class="headerlink" title="2.2 文件及目录管理"></a>2.2 文件及目录管理</h3><ul>
+<li><p>基本命令</p>
+<ul>
+<li>touch、 mkdir  创建文件或文件夹</li>
+<li>rm 、 rmdir 删除文件或文件夹， rm -rf 也可以删除文件夹</li>
+<li>mv   移动</li>
+<li>cd     切换目录</li>
+<li>cp     复制</li>
+<li>pwd 显示当前路径</li>
+<li>chmod 更改权限</li>
+<li>chown 更改所有者</li>
+<li>chgrp 更改所属组</li>
+</ul>
+<blockquote>
+<p>其中都可以加参数， 一般常用的参数为  -r 递归， -f 强制  -v 提示  </p>
+<p>也可以使用通配符， *表示匹配任意字符任意个数</p>
+</blockquote>
+</li>
+<li><p>文件查找</p>
+<ul>
+<li><p><code>find</code>   实施搜索文件或目录</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ./ -name "filename*"</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>常用参数：</strong></p>
+<ul>
+<li><p><code>-name</code>  查找文件名</p>
+</li>
+<li><p><code>-maxdepth n</code> 查找最大深度 n</p>
+<p>  <code>find . -maxdepth 1 -name &quot;filename&quot;</code>  </p>
+</li>
+<li><p><code>-regex</code>   按正则方式匹配</p>
+<p>  <code>find . -regex &quot;.*\(\.txt\|\.pdf\)$&quot;</code>   查找txt或pdf文件</p>
+</li>
+<li><p><code>-type</code>  按类型搜索， 常用的  d 文件夹， f 文件</p>
+</li>
+<li><p><code>-atime +-n</code>  +n表示七天前被访问过的， -n表示七天内被访问过的。  n表示第七天被访问过的。  </p>
+</li>
+<li><p><code>-size +-n</code>  +2k表示大于2K的文件， 支持的单位有  k M G</p>
+</li>
+<li><p><code>-delete</code>   找到后删除</p>
+</li>
+<li><p>执行动作  <code>find . -name &quot;*.swp&quot; -exec rm {} \;</code> </p>
+</li>
+</ul>
+</li>
+<li><p><code>locate</code>   使用文件系统索引搜索</p>
+<p> <code>locate filename</code></p>
+<p> 使用 <code>updatedb</code> 更新数据库， 以获得最新的索引</p>
+</li>
+</ul>
+</li>
+<li><p>查看文件内容</p>
+<blockquote>
+<p>可使用的工具有  cat  vi  head tail more等</p>
+</blockquote>
+<ul>
+<li><p><code>cat</code>  链接文件并输出到标准输出</p>
+<p>  cat 会把传入的文件都连起来，并输出到标准输出</p>
+<p>  <code>cat file1 file2</code>     会把file1 和 file2的内容连接起来一块输出到控制台</p>
+<p>  <strong>常用参数：</strong></p>
+<ul>
+<li><code>-n</code>  显示行号</li>
+<li><code>-b</code>  显示行号， 但不计算空行的行号， 这个参数会覆盖<code>-n</code></li>
+</ul>
+</li>
+<li><p><code>more</code>   按页显示列表内容</p>
+<p>  <code>ls -al | more</code></p>
+</li>
+<li><p><code>head</code>   从头查看内容</p>
+<p>  <code>head -10 file</code>  查看file的前十行</p>
+</li>
+<li><p><code>tail -5 file</code>  显示file的后五行</p>
+<p>  <strong>常用参数：</strong></p>
+<ul>
+<li><code>-f</code> 动态显示文本最新信息</li>
+</ul>
+</li>
+<li><p><code>diff file1 file2</code>   显示两个文件的差异</p>
+</li>
+</ul>
+</li>
+<li><p>文件链接 （快捷方式或别名）</p>
+<ul>
+<li><p><code>ln</code>  </p>
+<p>  <strong>常用参数：</strong></p>
+<ul>
+<li><p>默认创建硬连接， 删除其中一个， 另一个仍然能使用</p>
+</li>
+<li><p><code>-s</code>  创建软连接， 删除了源文件，则软连接失效， 删除软连接，源文件不影响。</p>
+<blockquote>
+<p>硬连接不能跨硬盘， 软连接可以</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>管道与重定向</p>
+<ul>
+<li><p>连接执行  <code>|</code></p>
+<p>  <code>ls -al | more</code></p>
+</li>
+<li><p>串联 <code>;</code> </p>
+<p>  <code>if ls /proc; then echo suss; else echo fail; fi</code></p>
+</li>
+<li><p>前面失败，则执行后一条  <code>||</code></p>
+<p>  <code>ls /proc &amp;&amp; echo  suss! || echo failed.</code>    与上一条效果相同</p>
+</li>
+<li><p>前面失败，不执行 <code>&amp;&amp;</code></p>
+<p>  <code>proc1 &amp;&amp; proc2</code></p>
+</li>
+<li><p>重定向</p>
+<p>  <code>ls proc/*.c &amp;&gt; list</code>   将错误和标准输出重定向的list文件</p>
+<p>  <code>:&gt; a.txt</code>    清空a.txt文件</p>
+<p>  <code>echo a &gt;&gt; a.txt</code>   重定向到a.txt</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-3-文本处理"><a href="#2-3-文本处理" class="headerlink" title="2.3 文本处理"></a>2.3 文本处理</h3><h2 id="三-Linux工具"><a href="#三-Linux工具" class="headerlink" title="三. Linux工具"></a>三. Linux工具</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sonky.top/7776412d/" data-id="ckkdwv0w90009m9pefej77qlv"
+         class="article-share-link">Share</a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tool/" rel="tag">tool</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/b89ddfa7/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer posts</strong>
+        <div class="article-nav-title">
+          
+            Hexo Commands
+          
+        </div>
+      </a>
+    
+    
+      <a href="/dbf3a70c/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title">hexo插入图片无法显示的问题</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  <div class="gitalk" id="gitalk-container"></div>
+  
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '731d296ff6b02332f282',
+      clientSecret: '69040a6c46c495ad968ac52f4e46b2a172e05b42',
+      repo: 'skywb.github.io',
+      owner: 'skywb',
+      admin: ['skywb'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+  
+
+</article>
+
+<style>
+.mydivinarticle {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	opacity: 0.9;
+	border:solid 1px black;
+	width:162px;
+	height: 36px;
+	margin:20px auto;
+	text-align: center;
+	color: #000;
+	background:  #FFF;
+	line-height: 34px;
+	font-weight: bold;
+}
+</style>
+
+
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2021 -sky-</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean" target="_blank" rel="noopener">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+
+<aside class="sidebar sidebar-specter">
+  
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="-sky-"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/talk">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/categories">Categories</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/tags">Tag</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+  <script>
+	  (function(){
+	   var bp = document.createElement('script');
+	   var curProtocol = window.location.protocol.split(':')[0];
+	   if (curProtocol === 'https') {
+	   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+	   }
+	   else {
+	   bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	   }
+	   var s = document.getElementsByTagName("script")[0];
+	   s.parentNode.insertBefore(bp, s);
+	   })();
+  </script>
+
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+</body>
+</html>

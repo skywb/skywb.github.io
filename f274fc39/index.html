@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+    <meta name="description" content="个人博客">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    Protobuf3简单使用及Demo |
+    
+    -sky-</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="-sky-" type="application/atom+xml">
+</head>
+
+<body>
+<main class="content">
+  <section class="outer">
+  
+
+<article id="post-Protobuf3简单使用及Demo" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Protobuf3简单使用及Demo
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/f274fc39/" class="article-date">
+  <time datetime="2019-05-30T12:46:03.000Z" itemprop="datePublished">2019-05-30</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/C/">C++</a>
+  </div>
+
+      </div>
+    
+
+    
+      
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+        <p>摘要：</p>
+<p>​    一个二进制协议， 可以兼容多种语言。</p>
+<a id="more"></a>
+
+
+
+<h3 id="Protobuf简介"><a href="#Protobuf简介" class="headerlink" title="Protobuf简介"></a>Protobuf简介</h3><blockquote>
+<pre><code>简单设计协议， 通过自带工具转换成为对应的语言代码， 协议是二进制协议， 设计时只需要描述各个类的关系， 简单明了</code></pre></blockquote>
+<h3 id="用法："><a href="#用法：" class="headerlink" title="用法："></a>用法：</h3><ul>
+<li>设计协议是在fileName.proto文件中， 其中fileName是自己定义， 在通过protoc转换成为对应的代码。</li>
+</ul>
+<ul>
+<li><p>关键字：</p>
+<ul>
+<li>message 表示一个消息体， 相当于一个类。</li>
+<li>每个message中都有对应的变量， 每个变量有个对应的编号， 每个message内不同变量的编号不能重复。</li>
+<li>新版本的protobuf没有了required， optional等说明关键字， 都默认为optional</li>
+</ul>
+</li>
+<li><p>基本语法</p>
+  <figure class="highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//指定版本 使用protobuf3</span></span><br><span class="line">syntax = <span class="string">"proto3"</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">message</span> <span class="title">Account</span> </span>&#123;</span><br><span class="line">	<span class="comment">//账号</span></span><br><span class="line">	<span class="built_in">uint64</span> ID = <span class="number">1</span>;</span><br><span class="line">	<span class="comment">//名字</span></span><br><span class="line">	<span class="built_in">string</span> name = <span class="number">2</span>;</span><br><span class="line">	<span class="comment">//密码</span></span><br><span class="line">	<span class="built_in">string</span> password = <span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<pre><code>语法很简单， 上面例子就是指定使用protob3， 然后定义了一个Account类， 里面包含ID， name, password， 对应的类型是  uint64， string， string。
+
+所以基本的语法规则跟C++类似。 只不过多了后面变量的编号。</code></pre></li>
+<li><p>生成代码：</p>
+<p>  需要生成什么语言的代码需要直接指定，例如C++</p>
+<p>  <code>protoc --cpp_out=./ project.proto</code></p>
+<p>  <code>protoc</code>是工具名， 可以直接运行的命令。</p>
+<p>  <code>--cpp_out</code>是参数， 指定生成C++代码， =后面指定生成的目录。</p>
+<p>  <code>project.proto</code>是定义的文件。</p>
+<p>  一共会生成两个文件。 <code>project.pb.h</code> 和 <code>project.pb.cc</code></p>
+<p>  其中有生成的Account类中有这几个设置属性的方法</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">clear_name</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> kNameFieldNumber = <span class="number">2</span>;</span><br><span class="line"><span class="function"><span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; <span class="title">name</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">set_name</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; value)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">set_name</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">string</span>&amp;&amp; value)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">set_name</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* value)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">set_name</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* value, <span class="keyword">size_t</span> <span class="built_in">size</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="built_in">std</span>::<span class="built_in">string</span>* <span class="title">mutable_name</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="built_in">std</span>::<span class="built_in">string</span>* <span class="title">release_name</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">set_allocated_name</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">string</span>* name)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// string password = 3;</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">clear_password</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> kPasswordFieldNumber = <span class="number">3</span>;</span><br><span class="line"><span class="function"><span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; <span class="title">password</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">set_password</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; value)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">set_password</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">string</span>&amp;&amp; value)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">set_password</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* value)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">set_password</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* value, <span class="keyword">size_t</span> <span class="built_in">size</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="built_in">std</span>::<span class="built_in">string</span>* <span class="title">mutable_password</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="built_in">std</span>::<span class="built_in">string</span>* <span class="title">release_password</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">set_allocated_password</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">string</span>* password)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// uint64 ID = 1;</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">clear_id</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> kIDFieldNumber = <span class="number">1</span>;</span><br><span class="line">::<span class="function">PROTOBUF_NAMESPACE_ID::uint64 <span class="title">id</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">set_id</span><span class="params">(::PROTOBUF_NAMESPACE_ID::uint64 value)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>  及get/set方法。</p>
+<p>  可以直接操作该类的属性。</p>
+</li>
+<li><p>使用该代码</p>
+<ul>
+<li><p>在要使用的代码中包含此头文件<code>project.pb.h</code></p>
+<p>  直接使用该对象即可。编译的时候需要把<code>project.pb.cc</code>编译， 并在链接的时候链接动态链接库 <code>libprotobuf.so</code></p>
+</li>
+</ul>
+</li>
+<li><p>demo</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"project.pb.h"</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Account account;</span><br><span class="line">	account.set_id(<span class="number">1000</span>);</span><br><span class="line">	account.set_name(<span class="string">"name"</span>);</span><br><span class="line">	account.set_password(<span class="string">"password"</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//序列化</span></span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">string</span> s = account.SerializeAsString();</span><br><span class="line">	<span class="keyword">if</span>(s.<span class="built_in">size</span>() == <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"error in SerializeAsString"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	Account nAccount;</span><br><span class="line">    <span class="comment">//反序列化</span></span><br><span class="line">	<span class="keyword">if</span>(nAccount.ParseFromString(s)) &#123;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; nAccount.id() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; nAccount.name() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; nAccount.password() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"error in ParseFromString"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编译</p>
+<p>  <code>project.pb.cc</code>也需要编译， 如果是工程中， 可以单独编译， 由于只有一个文件所以就放到一块编译了<code>g++ demo.cpp project.pb.cc -lprotobuf -o main</code></p>
+<p>  输出结果为：</p>
+<blockquote>
+<p>1000   </p>
+<p>name  </p>
+<p>password</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="更复杂的demo"><a href="#更复杂的demo" class="headerlink" title="更复杂的demo"></a>更复杂的demo</h3><ul>
+<li><p>message的嵌套</p>
+<blockquote>
+<p>message就像类一样， 所以它也是可以嵌套的。</p>
+<p>可以直接在message内写， 也可以在外部写， 但是要注意的是， 一个message内的编号不能重复。</p>
+<p>所以令写一个message会节省编号。</p>
+<p>节省编号的所有是节省空间。 前15号（0~15）用一个字节， 后面以此类推， 两个三个字节， 所以前15编号比较珍贵。</p>
+</blockquote>
+</li>
+<li><p>demo</p>
+  <figure class="highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//指定版本 使用protobuf3</span></span><br><span class="line">syntax = <span class="string">"proto3"</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">message</span> <span class="title">Account</span> </span>&#123;</span><br><span class="line">	<span class="comment">//账号</span></span><br><span class="line">	<span class="built_in">uint64</span> ID = <span class="number">1</span>;</span><br><span class="line">	<span class="comment">//名字</span></span><br><span class="line">	<span class="built_in">string</span> name = <span class="number">2</span>;</span><br><span class="line">	<span class="comment">//密码</span></span><br><span class="line">	<span class="built_in">string</span> password = <span class="number">3</span>;</span><br><span class="line">	<span class="comment">//宠物狗</span></span><br><span class="line">	Dog dog = <span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">message</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line">	<span class="built_in">string</span> name = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">bool</span> sex = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  还有几个比较重要的方法</p>
+<p>  <code>set_allocated_dog</code>  dog不是必须的， 是类的名字。  可以是其他的名字</p>
+<ul>
+<li><p>参数是一个对应类型的指针， 调用这个函数， 它会自动释放这个指针的对象， 所以不需要delete， 否则会段错误。</p>
+</li>
+<li><p>再次调用这个参数时， 如果之前已经设置过参数， 那么再次调用的时候会之前设置的属性删除， 并且delete越来的对象。 在设置成新的属性。</p>
+<p>除了这些方法之外还有一些clear之类的方法， 需要可以看文档或者给的头文件。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="oneof"><a href="#oneof" class="headerlink" title="oneof"></a>oneof</h3><blockquote>
+<p>oneof 是设置多个属性中的一个， 例如， 我的宠物可以是狗， 也可以是猫， 但是每个人只有一个的话。 设置两个占的空间就有点大。 因此只需要有一个就够了， 所以这个oneof就像union一样。</p>
+</blockquote>
+<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//指定版本 使用protobuf3</span></span><br><span class="line">syntax = <span class="string">"proto3"</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">message</span> <span class="title">Account</span> </span>&#123;</span><br><span class="line">	<span class="comment">//账号</span></span><br><span class="line">	<span class="built_in">uint64</span> ID = <span class="number">1</span>;</span><br><span class="line">	<span class="comment">//名字</span></span><br><span class="line">	<span class="built_in">string</span> name = <span class="number">2</span>;</span><br><span class="line">	<span class="comment">//密码</span></span><br><span class="line">	<span class="built_in">string</span> password = <span class="number">3</span>;</span><br><span class="line">	<span class="comment">//宠物</span></span><br><span class="line">	<span class="keyword">oneof</span> pet &#123;</span><br><span class="line">		Dog dog = <span class="number">4</span>;</span><br><span class="line">		Cat cat = <span class="number">5</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">message</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line">	<span class="built_in">string</span> name = <span class="number">1</span>;</span><br><span class="line">	<span class="built_in">bool</span> sex = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">message</span> <span class="title">Cat</span> </span>&#123;</span><br><span class="line">	<span class="built_in">string</span> name = <span class="number">1</span>;</span><br><span class="line">	<span class="comment">//属性可以与Dog不同</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>方法<ul>
+<li><code>has_cat</code> 或者 <code>has_dog</code> 方法用于检测是否有cat/dog</li>
+<li>添加cat和dog直接用原来的方法添加即可。  但是当添加dog的时候会自动删除cat， 反之亦然。</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sonky.top/f274fc39/" data-id="ckkdwv0wf000im9pe3cg8hcla"
+         class="article-share-link">Share</a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/protbuf/" rel="tag">protbuf</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tool/" rel="tag">tool</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/dbf3a70c/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer posts</strong>
+        <div class="article-nav-title">
+          
+            hexo插入图片无法显示的问题
+          
+        </div>
+      </a>
+    
+    
+      <a href="/f9c5a82d/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title">CMake入门和CMake外部构建</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  <div class="gitalk" id="gitalk-container"></div>
+  
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '731d296ff6b02332f282',
+      clientSecret: '69040a6c46c495ad968ac52f4e46b2a172e05b42',
+      repo: 'skywb.github.io',
+      owner: 'skywb',
+      admin: ['skywb'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+  
+
+</article>
+
+<style>
+.mydivinarticle {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	opacity: 0.9;
+	border:solid 1px black;
+	width:162px;
+	height: 36px;
+	margin:20px auto;
+	text-align: center;
+	color: #000;
+	background:  #FFF;
+	line-height: 34px;
+	font-weight: bold;
+}
+</style>
+
+
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2021 -sky-</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean" target="_blank" rel="noopener">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+
+<aside class="sidebar sidebar-specter">
+  
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="-sky-"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/talk">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/categories">Categories</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/tags">Tag</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+  <script>
+	  (function(){
+	   var bp = document.createElement('script');
+	   var curProtocol = window.location.protocol.split(':')[0];
+	   if (curProtocol === 'https') {
+	   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+	   }
+	   else {
+	   bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	   }
+	   var s = document.getElementsByTagName("script")[0];
+	   s.parentNode.insertBefore(bp, s);
+	   })();
+  </script>
+
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+</body>
+</html>

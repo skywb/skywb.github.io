@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+    <meta name="description" content="个人博客">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    vscode+wsl编译调试C++工程 |
+    
+    -sky-</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="-sky-" type="application/atom+xml">
+</head>
+
+<body>
+<main class="content">
+  <section class="outer">
+  
+
+<article id="post-vscode-wsl编译调试C-工程" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vscode+wsl编译调试C++工程
+    </h1>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/95e6964/" class="article-date">
+  <time datetime="2020-03-03T01:56:25.000Z" itemprop="datePublished">2020-03-03</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tool/">tool</a>
+  </div>
+
+      </div>
+    
+
+    
+      
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+        <h2 id="tl-dr"><a href="#tl-dr" class="headerlink" title="tl;dr"></a>tl;dr</h2><p><a href="vscode:extension/ms-vscode-remote.remote-wsl">安装remote-WSL插件</a></p>
+<p> <a href="vscode:extension/ms-vscode.cpptools">安装C++调试工具</a></p>
+<p>在wsl中要安装gdb与对应的编译工具</p>
+<p><code>code .</code> 可在vscode中打开当前文件夹，并远程连接。</p>
+<p><img src="/95e6964/test2-1583203445737.gif" alt="效果"></p>
+<a id="more"></a>
+
+
+
+<hr>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>虽然自己搭建的vim里面的调试也很好用了，在工具上依然不如可视化的调试环境好用，所以使用vscode自己折腾一下调试环境，平时自己写代码一般在wsl中，所以尝试用一下vscode的远程调试结合wsl。</p>
+<p><a href="https://code.visualstudio.com/docs/cpp/config-wsl" target="_blank" rel="noopener">vscode给的文档相当清楚明白</a></p>
+<p>说说主要的地方。</p>
+<h3 id="安装WSl"><a href="#安装WSl" class="headerlink" title="安装WSl"></a>安装WSl</h3><p>​    这里略过，参照其他的安装方法，网上很多。</p>
+<h3 id="安装vsCode插件"><a href="#安装vsCode插件" class="headerlink" title="安装vsCode插件"></a>安装vsCode插件</h3><p>点击如图所示左边第五个图标，打开扩展市场，搜索里面的<a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl" target="_blank" rel="noopener">remote-WSl</a>插件， 也可以<a href="vscode:extension/ms-vscode-remote.remote-wsl">点此安装</a></p>
+<p>​    <img src="/95e6964/image-20200303100745429.png" alt="image-20200303100745429"></p>
+<h3 id="在wsl中打开vsCode"><a href="#在wsl中打开vsCode" class="headerlink" title="在wsl中打开vsCode"></a>在wsl中打开vsCode</h3><p>​    在wsl中新建一个文件夹作为工程目录，例如我新建一个test文件加作为工程目录</p>
+<p><img src="/95e6964/image-20200303101215609.png" alt="image-20200303101215609"></p>
+<p>然后运行命令：<code>code .</code></p>
+<p>首次运行的时候会出现安装提示，稍后会打开vscode， 发现vscode的底部状态栏有如下的状态。</p>
+<p><img src="/95e6964/image-20200303101344778.png" alt="image-20200303101344778"></p>
+<p>说明已经连接，并且此时vscode打开的目录就是你的工程目录。</p>
+<p><img src="/95e6964/image-20200303101709216.png" alt="image-20200303101709216"></p>
+<h3 id="编译配置文件"><a href="#编译配置文件" class="headerlink" title="编译配置文件"></a>编译配置文件</h3><p>此时如果需要编译，那么就需要添加编译配置，创建一个tasks.json 文件，设置编译相关的命令。也可以如下所示直接使用编译，vscode会提示创建tasks.json文件。</p>
+<p><img src="/95e6964/image-20200303101755621.png" alt="image-20200303101755621"></p>
+<p><img src="/95e6964/test.gif" alt="image-20200303102040565"></p>
+<ul>
+<li><p>生成的tasks.json为默认的内容，需要对其进行修改。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&quot;tasks&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;label&quot;: &quot;build demo&quot;,</span><br><span class="line">            &quot;type&quot;: &quot;shell&quot;,</span><br><span class="line">            &quot;command&quot;: &quot;&#x2F;usr&#x2F;bin&#x2F;g++&quot;,</span><br><span class="line">            &quot;args&quot;: [</span><br><span class="line">                &quot;-g&quot;,</span><br><span class="line">                &quot;$&#123;file&#125;&quot;,</span><br><span class="line">                &quot;-o&quot;,</span><br><span class="line">                &quot;$&#123;fileDirname&#125;&#x2F;$&#123;fileBasenameNoExtension&#125;&quot;</span><br><span class="line">            ],</span><br><span class="line">            &quot;group&quot;: &#123;</span><br><span class="line">                &quot;kind&quot;: &quot;build&quot;,</span><br><span class="line">                &quot;isDefault&quot;: true</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br></pre></td></tr></table></figure>
+
+<p>  以上配置需要在要编译的文件的页面进行编译，因为${file} 获取的是当前文件名，以上仅为例子，如果编译工程需要使用make或者cmake等工具跟上面使用方法一样，改变command和args即可。</p>
+</li>
+<li><p>再次重复上面，Terminal &gt; Run Build Task 选择即可。</p>
+</li>
+</ul>
+<h3 id="调试配置文件"><a href="#调试配置文件" class="headerlink" title="调试配置文件"></a>调试配置文件</h3><p>调试需要再安装一个拓展插件 <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools" target="_blank" rel="noopener">C/C++</a>, <a href="vscode:extension/ms-vscode.cpptools">点击可安装</a></p>
+<p><img src="/95e6964/image-20200303103515254.png" alt="image-20200303103515254"></p>
+<ul>
+<li>创建一个launch.json 文件，配置调试选项</li>
+</ul>
+<p><img src="/95e6964/test1-1583203167206.gif" alt></p>
+<p>如图可以新建一个默认的编译并调试的launch.json文件，只需要对其简单修改即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&quot;configurations&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;name&quot;: &quot;g++ build and debug active file&quot;,</span><br><span class="line">            &quot;type&quot;: &quot;cppdbg&quot;,</span><br><span class="line">            &quot;request&quot;: &quot;launch&quot;,</span><br><span class="line">            &quot;program&quot;: &quot;$&#123;fileDirname&#125;&#x2F;$&#123;fileBasenameNoExtension&#125;&quot;,</span><br><span class="line">            &quot;args&quot;: [],</span><br><span class="line">            &quot;stopAtEntry&quot;: false,</span><br><span class="line">            &quot;cwd&quot;: &quot;$&#123;workspaceFolder&#125;&quot;,</span><br><span class="line">            &quot;environment&quot;: [],</span><br><span class="line">            &quot;externalConsole&quot;: false,</span><br><span class="line">            &quot;MIMode&quot;: &quot;gdb&quot;,</span><br><span class="line">            &quot;setupCommands&quot;: [</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;description&quot;: &quot;Enable pretty-printing for gdb&quot;,</span><br><span class="line">                    &quot;text&quot;: &quot;-enable-pretty-printing&quot;,</span><br><span class="line">                    &quot;ignoreFailures&quot;: true</span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            &quot;preLaunchTask&quot;: &quot;build demo&quot;,   &#x2F;&#x2F;编译的task的名称</span><br><span class="line">            &quot;miDebuggerPath&quot;: &quot;&#x2F;usr&#x2F;bin&#x2F;gdb&quot;   &#x2F;&#x2F;gdb的路径</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br></pre></td></tr></table></figure>
+
+<p>这样就可以编译与调试了。</p>
+<h4 id="编译与调试"><a href="#编译与调试" class="headerlink" title="编译与调试"></a>编译与调试</h4><p><img src="/95e6964/test2-1583203445737.gif" alt></p>
+<h3 id="参考连接"><a href="#参考连接" class="headerlink" title="参考连接"></a>参考连接</h3><p><a href="https://code.visualstudio.com/docs/cpp/config-wsl" target="_blank" rel="noopener">https://code.visualstudio.com/docs/cpp/config-wsl</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sonky.top/95e6964/" data-id="ckkdwv0wi000pm9pe7nk2312f"
+         class="article-share-link">Share</a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vscode/" rel="tag">vscode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wsl/" rel="tag">wsl</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+      <a href="/1ebe501c/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer posts</strong>
+        <div class="article-nav-title">
+          
+            Conan使用入门
+          
+        </div>
+      </a>
+    
+    
+      <a href="/de2aaebe/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title">更新安装到WSL2</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  <div class="gitalk" id="gitalk-container"></div>
+  
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '731d296ff6b02332f282',
+      clientSecret: '69040a6c46c495ad968ac52f4e46b2a172e05b42',
+      repo: 'skywb.github.io',
+      owner: 'skywb',
+      admin: ['skywb'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+  
+
+</article>
+
+<style>
+.mydivinarticle {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	opacity: 0.9;
+	border:solid 1px black;
+	width:162px;
+	height: 36px;
+	margin:20px auto;
+	text-align: center;
+	color: #000;
+	background:  #FFF;
+	line-height: 34px;
+	font-weight: bold;
+}
+</style>
+
+
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2021 -sky-</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean" target="_blank" rel="noopener">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+
+<aside class="sidebar sidebar-specter">
+  
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="-sky-"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/talk">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/categories">Categories</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/tags">Tag</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+  <script>
+	  (function(){
+	   var bp = document.createElement('script');
+	   var curProtocol = window.location.protocol.split(':')[0];
+	   if (curProtocol === 'https') {
+	   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+	   }
+	   else {
+	   bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	   }
+	   var s = document.getElementsByTagName("script")[0];
+	   s.parentNode.insertBefore(bp, s);
+	   })();
+  </script>
+
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+</body>
+</html>

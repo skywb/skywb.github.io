@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>-sky-</title>
+  
+  <subtitle>我有一个梦想，陶醉在绿水青山的故乡</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://sonky.top/"/>
+  <updated>2021-01-26T11:00:22.096Z</updated>
+  <id>https://sonky.top/</id>
+  
+  <author>
+    <name>skywb</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Conan使用入门</title>
+    <link href="https://sonky.top/1ebe501c/"/>
+    <id>https://sonky.top/1ebe501c/</id>
+    <published>2020-04-10T05:31:59.000Z</published>
+    <updated>2021-01-26T11:00:22.096Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;tl-dr&quot;&gt;&lt;a href=&quot;#tl-dr&quot; class=&quot;headerlink&quot; title=&quot;tl;dr&quot;&gt;&lt;/a&gt;tl;dr&lt;/h2&gt;&lt;p&gt;Conan 是C++的一个包管理工具，使得C++安装第三方库变的很方便。 类似于vs的NuGet&lt;/p&gt;
+&lt;p&gt;Conan的基本命令：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;查找库： &lt;code&gt;conan search poco --remote=conan-center&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;安装库：&lt;code&gt;conan inspect poco/1.9.4&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;安装到项目：&lt;code&gt;conan install ..&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;conanfile.txt样例：&lt;/p&gt;
+  &lt;figure class=&quot;highlight tex&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[requires]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;poco/1.9.4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[generators]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cmake&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;CMakeLists.txt 插入内容：&lt;/p&gt;
+  &lt;figure class=&quot;highlight cmake&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;include&lt;/span&gt;(&lt;span class=&quot;variable&quot;&gt;$&amp;#123;CMAKE_BINARY_DIR&amp;#125;&lt;/span&gt;/conanbuildinfo.cmake)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;conan_basic_setup()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+
+
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="tool" scheme="https://sonky.top/categories/tool/"/>
+    
+    
+      <category term="tool" scheme="https://sonky.top/tags/tool/"/>
+    
+      <category term="conan" scheme="https://sonky.top/tags/conan/"/>
+    
+      <category term="C++" scheme="https://sonky.top/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vscode+wsl编译调试C++工程</title>
+    <link href="https://sonky.top/95e6964/"/>
+    <id>https://sonky.top/95e6964/</id>
+    <published>2020-03-03T01:56:25.000Z</published>
+    <updated>2021-01-26T11:00:22.112Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;tl-dr&quot;&gt;&lt;a href=&quot;#tl-dr&quot; class=&quot;headerlink&quot; title=&quot;tl;dr&quot;&gt;&lt;/a&gt;tl;dr&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;vscode:extension/ms-vscode-remote.remote-wsl&quot;&gt;安装remote-WSL插件&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt; &lt;a href=&quot;vscode:extension/ms-vscode.cpptools&quot;&gt;安装C++调试工具&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;在wsl中要安装gdb与对应的编译工具&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;code .&lt;/code&gt; 可在vscode中打开当前文件夹，并远程连接。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/95e6964/test2-1583203445737.gif&quot; alt=&quot;效果&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="tool" scheme="https://sonky.top/categories/tool/"/>
+    
+    
+      <category term="wsl" scheme="https://sonky.top/tags/wsl/"/>
+    
+      <category term="vscode" scheme="https://sonky.top/tags/vscode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>更新安装到WSL2</title>
+    <link href="https://sonky.top/de2aaebe/"/>
+    <id>https://sonky.top/de2aaebe/</id>
+    <published>2020-02-29T03:11:53.000Z</published>
+    <updated>2021-01-26T11:00:22.134Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;tl-dr&quot;&gt;&lt;a href=&quot;#tl-dr&quot; class=&quot;headerlink&quot; title=&quot;tl;dr&quot;&gt;&lt;/a&gt;tl;dr&lt;/h2&gt;&lt;p&gt;必须是18917或更高版本：&lt;/p&gt;
+&lt;p&gt;powershell管理员运行：&lt;/p&gt;
+&lt;figure class=&quot;highlight powershell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;dism.exe /online /&lt;span class=&quot;built_in&quot;&gt;enable-feature&lt;/span&gt; /featurename:Microsoft&lt;span class=&quot;literal&quot;&gt;-Windows&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-Subsystem&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-Linux&lt;/span&gt; /all /norestart&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;dism.exe /online /&lt;span class=&quot;built_in&quot;&gt;enable-feature&lt;/span&gt; /featurename:VirtualMachinePlatform /all /norestart&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;检查当前使用的bash名&lt;/p&gt;
+&lt;figure class=&quot;highlight powershell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;wsl &lt;span class=&quot;literal&quot;&gt;-l&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;设置版本：&lt;/p&gt;
+&lt;figure class=&quot;highlight powershell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;wsl -&lt;span class=&quot;literal&quot;&gt;-set&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-version&lt;/span&gt; &amp;lt;Distro&amp;gt; &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;wsl -&lt;span class=&quot;literal&quot;&gt;-set&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-default&lt;/span&gt;&lt;span class=&quot;literal&quot;&gt;-version&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;其中&amp;lt;Distro&amp;gt; 替换成对应的bash名字&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="tool" scheme="https://sonky.top/categories/tool/"/>
+    
+    
+      <category term="tool" scheme="https://sonky.top/tags/tool/"/>
+    
+      <category term="wsl" scheme="https://sonky.top/tags/wsl/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Pimpl 模式</title>
+    <link href="https://sonky.top/1fb7cb45/"/>
+    <id>https://sonky.top/1fb7cb45/</id>
+    <published>2019-12-01T06:17:45.000Z</published>
+    <updated>2021-01-26T11:00:22.098Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;​    Pimpl （pointer to implementation） 是一种将接口和具体的实现分开的一种方式，优化编译时间，保护封装实现的一种经验技巧。&lt;/p&gt;
+&lt;h2 id=&quot;tl-dr&quot;&gt;&lt;a href=&quot;#tl-dr&quot; class=&quot;headerlink&quot; title=&quot;tl;dr&quot;&gt;&lt;/a&gt;tl;dr&lt;/h2&gt;&lt;p&gt;​    就是说模块对外接口类里面不放实现，而是保存一个指针， 指向真正实现的类。然后在接口类里面同名方法通过指针调用真正实现方法。&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="编程" scheme="https://sonky.top/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GTest单元测试框架的基本使用</title>
+    <link href="https://sonky.top/29d24fe4/"/>
+    <id>https://sonky.top/29d24fe4/</id>
+    <published>2019-11-10T08:03:52.000Z</published>
+    <updated>2021-01-26T11:00:22.096Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;GTest&quot;&gt;&lt;a href=&quot;#GTest&quot; class=&quot;headerlink&quot; title=&quot;GTest&quot;&gt;&lt;/a&gt;GTest&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;简介： google的单元测试框架&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;tl-dr&quot;&gt;&lt;a href=&quot;#tl-dr&quot; class=&quot;headerlink&quot; title=&quot;tl;dr&quot;&gt;&lt;/a&gt;tl;dr&lt;/h3&gt;&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;span class=&quot;meta-keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;meta-string&quot;&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;span class=&quot;meta-keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;meta-string&quot;&gt;&amp;lt;gtest/gtest.h&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; a, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; b)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; a+b;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;TEST(TestFun, Add) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	EXPECT_EQ(add(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;), &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	EXPECT_EQ(add(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;), &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;) &amp;lt;&amp;lt; &lt;span class=&quot;string&quot;&gt;&quot;add (1, 2) 应该是 &quot;&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class=&quot;string&quot;&gt;&quot;是的的结果是 &quot;&lt;/span&gt; &amp;lt;&amp;lt; add(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	ASSERT_EQ(add(&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;), &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;有一个被测试的方法， add， 通过TEST添加一个测试案例， 可以使用EXPECT和ASSERT两种宏， 实现测试值是否正确， 每个宏后面都可以跟上解释信息。  其中第二个很明显是错误的， 输出结果看下面。&lt;/p&gt;
+&lt;p&gt;编译命令&lt;code&gt;g++ file.cpp -lgtest -lgtest_main -lpthread -o main&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;其中用到了三个动态链接库， 第一个是gtest的库， 第二个是运行所有测试的实现， 其实里面就是写了个main函数， 也可以自己写，不连接这个库， 第三个是多线程库， 因为gtest使用了线程。&lt;/p&gt;
+&lt;p&gt;运行结果：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/29d24fe4/1573372797119.png&quot; alt=&quot;1573372797119&quot;&gt;&lt;/p&gt;
+&lt;p&gt;可以看到失败的地方会有提示。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="tool" scheme="https://sonky.top/categories/tool/"/>
+    
+    
+      <category term="tool" scheme="https://sonky.top/tags/tool/"/>
+    
+      <category term="gtest" scheme="https://sonky.top/tags/gtest/"/>
+    
+      <category term="gmock" scheme="https://sonky.top/tags/gmock/"/>
+    
+      <category term="单元测试" scheme="https://sonky.top/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo Commands</title>
+    <link href="https://sonky.top/b89ddfa7/"/>
+    <id>https://sonky.top/b89ddfa7/</id>
+    <published>2019-10-07T02:21:10.000Z</published>
+    <updated>2021-01-26T11:00:22.097Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;​    摘要：&lt;/p&gt;
+&lt;p&gt;​    Hexo common commands &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;init     –  init&lt;/li&gt;
+&lt;li&gt;new   –  new blog&lt;/li&gt;
+&lt;li&gt;generate  – generate page&lt;/li&gt;
+&lt;li&gt;deploy  – push to github&lt;/li&gt;
+&lt;li&gt;clean  – clean&lt;/li&gt;
+&lt;li&gt;server  – run locally&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="tool" scheme="https://sonky.top/categories/tool/"/>
+    
+    
+      <category term="tool" scheme="https://sonky.top/tags/tool/"/>
+    
+      <category term="Hexo" scheme="https://sonky.top/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux常用技巧</title>
+    <link href="https://sonky.top/7776412d/"/>
+    <id>https://sonky.top/7776412d/</id>
+    <published>2019-09-14T12:51:49.000Z</published>
+    <updated>2021-01-26T11:00:22.097Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;摘要：&lt;/p&gt;
+&lt;p&gt;​    在Linux下的一些常用的命令， 例如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- 快捷键
+- whatis
+- 文件操作
+- 磁盘操作等 
+- 进程等&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+    
+      <category term="Linux基础" scheme="https://sonky.top/categories/Linux%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="tool" scheme="https://sonky.top/tags/tool/"/>
+    
+      <category term="Linux" scheme="https://sonky.top/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo插入图片无法显示的问题</title>
+    <link href="https://sonky.top/dbf3a70c/"/>
+    <id>https://sonky.top/dbf3a70c/</id>
+    <published>2019-09-12T04:35:36.000Z</published>
+    <updated>2021-01-26T11:00:22.110Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;​    hexo上的图片无法显示的原因是hexo-asset-image插件有个bug， 解决一处错误之后就可以显示图片了。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="other" scheme="https://sonky.top/categories/other/"/>
+    
+    
+      <category term="hexo" scheme="https://sonky.top/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Protobuf3简单使用及Demo</title>
+    <link href="https://sonky.top/f274fc39/"/>
+    <id>https://sonky.top/f274fc39/</id>
+    <published>2019-05-30T12:46:03.000Z</published>
+    <updated>2021-01-26T11:00:22.098Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;摘要：&lt;/p&gt;
+&lt;p&gt;​    一个二进制协议， 可以兼容多种语言。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="C++" scheme="https://sonky.top/categories/C/"/>
+    
+    
+      <category term="tool" scheme="https://sonky.top/tags/tool/"/>
+    
+      <category term="protbuf" scheme="https://sonky.top/tags/protbuf/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CMake入门和CMake外部构建</title>
+    <link href="https://sonky.top/f9c5a82d/"/>
+    <id>https://sonky.top/f9c5a82d/</id>
+    <published>2019-05-01T06:54:19.000Z</published>
+    <updated>2021-01-26T11:00:22.096Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;摘要：&lt;/p&gt;
+&lt;p&gt;​    CMake的基本使用&lt;/p&gt;
+&lt;p&gt;​    适用CMake在外部构建， 防止污染工作目录&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="tool" scheme="https://sonky.top/categories/tool/"/>
+    
+    
+      <category term="tool" scheme="https://sonky.top/tags/tool/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux进程内存分布</title>
+    <link href="https://sonky.top/c284c665/"/>
+    <id>https://sonky.top/c284c665/</id>
+    <published>2019-02-12T05:14:03.000Z</published>
+    <updated>2021-01-26T11:00:22.097Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;​        在多任务操作系统中， 每个进程都有自己的内存沙盘， 使用的内存地址都是自己内存中的相对地址，当CPU时间片轮转到的时候， 操作系统将对应进程的内存页调入寄存器， 进程开始运行。因此不同进程间的内存地址是没有关联的， 都是自己的相对地址。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Linux基础" scheme="https://sonky.top/categories/Linux%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="Linux" scheme="https://sonky.top/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>通过运行窗口启动自己安装的应用</title>
+    <link href="https://sonky.top/7133041a/"/>
+    <id>https://sonky.top/7133041a/</id>
+    <published>2019-02-09T04:44:38.000Z</published>
+    <updated>2021-01-26T11:00:22.138Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;前段时间安装的半透明bash感觉挺好看的, 再配上音乐的桌面写真,  但是烦恼的是桌面太多快捷方式之类的, 全部隐藏吧, 感觉打开很麻烦, 放到开始的磁力贴那里也不方便. 但是想起来 win+r   这是个好东西啊, 为什么不利用下呢, 于是开始了捣鼓之旅~&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="tool" scheme="https://sonky.top/categories/tool/"/>
+    
+    
+      <category term="windows" scheme="https://sonky.top/tags/windows/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>把wsl的vim内容复制到windows粘贴板上</title>
+    <link href="https://sonky.top/b32afe9e/"/>
+    <id>https://sonky.top/b32afe9e/</id>
+    <published>2019-01-21T07:14:36.000Z</published>
+    <updated>2021-01-26T11:00:22.136Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一直比较喜欢用vim， 为此还装了双系统， 在Ubuntu上写代码，但是好不方便， 现在出了个ubuntu on windows 10, 耐不住寂寞就安装了个， 顺手就配置了vim， 但是写算法的我需要复制代码交到oj上啊， 尴尬的一幕出现了， 这是两个系统， 用的不是一个剪切板啊。然后就开始了我折腾的旅程（废话好多。。。逃~）&lt;/p&gt;
+&lt;p&gt;找了找windows， 在C:\Windows\System32 下有个 clip.exe 文件， 这就是我们用的剪切功能，如果在bash里运行呢， 会不会就是写入win10的剪切板， 试了下果然！太棒了。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="skill" scheme="https://sonky.top/categories/skill/"/>
+    
+    
+      <category term="windows" scheme="https://sonky.top/tags/windows/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>设置WSL可远程连接</title>
+    <link href="https://sonky.top/c67633e4/"/>
+    <id>https://sonky.top/c67633e4/</id>
+    <published>2018-09-28T08:32:08.000Z</published>
+    <updated>2021-01-26T11:00:22.136Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;为了可以在学校机房的电脑上使用我熟悉的环境也是蛮拼的,  特地把WSL设置成了远程连接. 到时候就可以通过xshell连接了, 使用我心爱的vim了, 并且还不用配置, 哈哈哈哈~&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="setting" scheme="https://sonky.top/categories/setting/"/>
+    
+    
+      <category term="wsl" scheme="https://sonky.top/tags/wsl/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>安装STL的man文档</title>
+    <link href="https://sonky.top/b148353a/"/>
+    <id>https://sonky.top/b148353a/</id>
+    <published>2018-09-23T09:30:14.000Z</published>
+    <updated>2021-01-26T11:00:22.131Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;摘要：&lt;br&gt;    现man一样显示stl的帮助文档&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="tool" scheme="https://sonky.top/categories/tool/"/>
+    
+    
+      <category term="tool" scheme="https://sonky.top/tags/tool/"/>
+    
+      <category term="wsl" scheme="https://sonky.top/tags/wsl/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>bash on win10 半透明效果及缓冲区大小设置</title>
+    <link href="https://sonky.top/96f50417/"/>
+    <id>https://sonky.top/96f50417/</id>
+    <published>2018-02-09T04:59:58.000Z</published>
+    <updated>2021-01-26T11:00:22.099Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一、bash半透明效果设置&lt;/p&gt;
+&lt;p&gt;先来两张效果图&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/96f50417/20180209124830981.png&quot; alt=&quot;img&quot;&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==&quot; alt=&quot;点击并拖拽以移动&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/96f50417/20180209124947571.png&quot; alt=&quot;img&quot;&gt;)&lt;img src=&quot;data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==&quot; alt=&quot;点击并拖拽以移动&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="tool" scheme="https://sonky.top/categories/tool/"/>
+    
+    
+      <category term="wsl" scheme="https://sonky.top/tags/wsl/"/>
+    
+  </entry>
+  
+</feed>
