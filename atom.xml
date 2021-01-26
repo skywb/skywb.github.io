@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sonky.top/"/>
-  <updated>2021-01-26T11:28:42.094Z</updated>
+  <updated>2021-01-26T11:36:05.436Z</updated>
   <id>https://sonky.top/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://sonky.top/ecad5b71/"/>
     <id>https://sonky.top/ecad5b71/</id>
     <published>2021-01-26T11:24:20.000Z</published>
-    <updated>2021-01-26T11:28:42.094Z</updated>
+    <updated>2021-01-26T11:36:05.436Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,7 @@
       
         
         
-          &lt;h2 id=&quot;依赖环境&quot;&gt;&lt;a href=&quot;#依赖环境&quot; class=&quot;headerlink&quot; title=&quot;依赖环境&quot;&gt;&lt;/a&gt;依赖环境&lt;/h2&gt;&lt;p&gt;&lt;code&gt;cmake, git, nodejs, python3,
+          &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;基于vim8.2、coc.nvim + ccls
         
       
     
