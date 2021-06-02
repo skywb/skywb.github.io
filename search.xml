@@ -154,13 +154,13 @@
       
         <tags>
             
-            <tag> tool </tag>
-            
             <tag> gtest </tag>
             
             <tag> gmock </tag>
             
             <tag> 单元测试 </tag>
+            
+            <tag> tool </tag>
             
         </tags>
       

@@ -114,14 +114,14 @@
   </url>
   
   <url>
-    <loc>https://sonky.cn/f274fc39/</loc>
+    <loc>https://sonky.cn/1fb7cb45/</loc>
     
     <lastmod>2021-01-26</lastmod>
     
   </url>
   
   <url>
-    <loc>https://sonky.cn/1fb7cb45/</loc>
+    <loc>https://sonky.cn/f274fc39/</loc>
     
     <lastmod>2021-01-26</lastmod>
     
@@ -172,13 +172,6 @@
 
   
   <url>
-    <loc>https://sonky.cn/tags/tool/</loc>
-    <lastmod>2021-06-02</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://sonky.cn/tags/gtest/</loc>
     <lastmod>2021-06-02</lastmod>
     <changefreq>daily</changefreq>
@@ -194,6 +187,13 @@
   
   <url>
     <loc>https://sonky.cn/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/</loc>
+    <lastmod>2021-06-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://sonky.cn/tags/tool/</loc>
     <lastmod>2021-06-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -228,7 +228,7 @@
   </url>
   
   <url>
-    <loc>https://sonky.cn/tags/wsl/</loc>
+    <loc>https://sonky.cn/tags/%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2021-06-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -242,7 +242,7 @@
   </url>
   
   <url>
-    <loc>https://sonky.cn/tags/%E7%BC%96%E7%A8%8B/</loc>
+    <loc>https://sonky.cn/tags/wsl/</loc>
     <lastmod>2021-06-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
