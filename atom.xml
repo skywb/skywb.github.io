@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sonky.top/"/>
-  <updated>2021-01-26T11:59:58.466Z</updated>
+  <updated>2021-02-26T09:53:25.363Z</updated>
   <id>https://sonky.top/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vim开发环境</title>
+    <link href="https://sonky.top/977574a9/"/>
+    <id>https://sonky.top/977574a9/</id>
+    <published>2021-02-26T09:41:24.000Z</published>
+    <updated>2021-02-26T09:53:25.363Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;​    个人搭建的vim C++开发环境， 使用coc.nvim框架 + ccls 提供补全服务。实现基本的语意补全、跳转，查找引用等功能。原则是尽量不修改vim原生按键功能。&lt;/p&gt;
+&lt;p&gt;​    仓库地址：&lt;a href=&quot;https://github.com/skywb/vim-config&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/skywb/vim-config&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>vim C++开发环境搭建</title>
@@ -163,7 +181,7 @@
     <link href="https://sonky.top/29d24fe4/"/>
     <id>https://sonky.top/29d24fe4/</id>
     <published>2019-11-10T08:03:52.000Z</published>
-    <updated>2021-01-26T11:00:22.096Z</updated>
+    <updated>2021-05-26T08:14:48.221Z</updated>
     
     <summary type="html">
     
