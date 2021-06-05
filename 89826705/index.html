@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>
-    Vim开发环境 |
+    Docker入门 |
     
     -sky-</title>
   
@@ -34,7 +34,7 @@
   <section class="outer">
   
 
-<article id="post-Vim开发环境" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+<article id="post-Docker入门" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
   
   <div class="article-inner">
     
@@ -42,7 +42,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Vim开发环境
+      Docker入门
     </h1>
   
   
@@ -55,10 +55,14 @@
 
     
       <div class="article-meta">
-        <a href="/977574a9/" class="article-date">
-  <time datetime="2021-02-26T09:41:24.000Z" itemprop="datePublished">2021-02-26</time>
+        <a href="/89826705/" class="article-date">
+  <time datetime="2021-06-05T14:38:48.000Z" itemprop="datePublished">2021-06-05</time>
 </a>
         
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tool/">tool</a>
+  </div>
+
       </div>
     
 
@@ -79,19 +83,49 @@
       
 
       
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>​    个人搭建的vim C++开发环境， 使用coc.nvim框架 + ccls 提供补全服务。实现基本的语意补全、跳转，查找引用等功能。原则是尽量不修改vim原生按键功能。</p>
-<p>​    仓库地址：<a href="https://github.com/skywb/vim-config" target="_blank" rel="noopener">https://github.com/skywb/vim-config</a></p>
+        <h3 id="tldr"><a href="#tldr" class="headerlink" title="tldr;"></a>tldr;</h3><ul>
+<li><code>docker images</code> 查看当前本地所有的镜像</li>
+<li><code>docker ps</code>   当前所有创建的容器状态</li>
+<li><code>docker pull image_name</code> 从官方仓库拉取镜像</li>
+<li><code>docker exec -it --name [container_id | container_name]  bash</code>  交互式连接一个正在运行的容器</li>
+<li><code>docker rm container_id</code>   删除一个容器</li>
+<li><code>docker [start|stop|restart] container_id</code>   启动、停止、重启一个容器</li>
+</ul>
 <a id="more"></a>
 
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><h2 id="补全与跳转"><a href="#补全与跳转" class="headerlink" title="补全与跳转"></a>补全与跳转</h2><h2 id="查找与匹配"><a href="#查找与匹配" class="headerlink" title="查找与匹配"></a>查找与匹配</h2><h2 id="Command"><a href="#Command" class="headerlink" title="Command"></a>Command</h2><h2 id="快捷键补充"><a href="#快捷键补充" class="headerlink" title="快捷键补充"></a>快捷键补充</h2><hr>
+
+
+
+
+<h2 id="容器创建"><a href="#容器创建" class="headerlink" title="容器创建"></a>容器创建</h2><p>容器创建有两种方式</p>
+<ul>
+<li>登陆容器，配置之后commit</li>
+<li>通过dockerfile 创建   </li>
+</ul>
+<blockquote>
+<p>官方推荐使用dockerfile的方式</p>
+</blockquote>
+<h3 id="通过Dockerfile创建docker"><a href="#通过Dockerfile创建docker" class="headerlink" title="通过Dockerfile创建docker"></a>通过Dockerfile创建docker</h3><ol>
+<li>写Dockerfile</li>
+<li><code>docker build -t image_name:v1 .</code><ul>
+<li>RUN 会执行命令</li>
+<li>COPY会拷贝当前目录中的文件到docker中</li>
+</ul>
+</li>
+<li>docker run</li>
+</ol>
+<p>未完，后续有时间更新…</p>
+<hr>
 <p>参考连接：</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://sonky.cn/977574a9/" data-id="ckpf5ge21000kxqpe2ozt0f0a"
+      <a data-url="https://sonky.cn/89826705/" data-id="ckpjv5mjj000084pedvsyfp1h"
          class="article-share-link">Share</a>
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tool/" rel="tag">tool</a></li></ul>
+
     </footer>
 
   </div>
@@ -100,19 +134,10 @@
     
   <nav class="article-nav">
     
-      <a href="/89826705/" class="article-nav-link">
-        <strong class="article-nav-caption">Newer posts</strong>
-        <div class="article-nav-title">
-          
-            Docker入门
-          
-        </div>
-      </a>
     
-    
-      <a href="/ecad5b71/" class="article-nav-link">
+      <a href="/977574a9/" class="article-nav-link">
         <strong class="article-nav-caption">Olde posts</strong>
-        <div class="article-nav-title">vim C++开发环境搭建</div>
+        <div class="article-nav-title">Vim开发环境</div>
       </a>
     
   </nav>

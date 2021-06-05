@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Docker入门</title>
+      <link href="89826705/"/>
+      <url>89826705/</url>
+      
+        <content type="html"><![CDATA[<h3 id="tldr"><a href="#tldr" class="headerlink" title="tldr;"></a>tldr;</h3><ul><li><code>docker images</code> 查看当前本地所有的镜像</li><li><code>docker ps</code>   当前所有创建的容器状态</li><li><code>docker pull image_name</code> 从官方仓库拉取镜像</li><li><code>docker exec -it --name [container_id | container_name]  bash</code>  交互式连接一个正在运行的容器</li><li><code>docker rm container_id</code>   删除一个容器</li><li><code>docker [start|stop|restart] container_id</code>   启动、停止、重启一个容器</li></ul><a id="more"></a><h2 id="容器创建"><a href="#容器创建" class="headerlink" title="容器创建"></a>容器创建</h2><p>容器创建有两种方式</p><ul><li>登陆容器，配置之后commit</li><li>通过dockerfile 创建   </li></ul><blockquote><p>官方推荐使用dockerfile的方式</p></blockquote><h3 id="通过Dockerfile创建docker"><a href="#通过Dockerfile创建docker" class="headerlink" title="通过Dockerfile创建docker"></a>通过Dockerfile创建docker</h3><ol><li>写Dockerfile</li><li><code>docker build -t image_name:v1 .</code><ul><li>RUN 会执行命令</li><li>COPY会拷贝当前目录中的文件到docker中</li></ul></li><li>docker run</li></ol><p>未完，后续有时间更新…</p><hr><p>参考连接：</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> tool </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tool </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Vim开发环境</title>
       <link href="977574a9/"/>
       <url>977574a9/</url>

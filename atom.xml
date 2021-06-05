@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sonky.cn/"/>
-  <updated>2021-06-02T07:14:48.056Z</updated>
+  <updated>2021-06-05T14:40:24.026Z</updated>
   <id>https://sonky.cn/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker入门</title>
+    <link href="https://sonky.cn/89826705/"/>
+    <id>https://sonky.cn/89826705/</id>
+    <published>2021-06-05T14:38:48.000Z</published>
+    <updated>2021-06-05T14:40:24.026Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;tldr&quot;&gt;&lt;a href=&quot;#tldr&quot; class=&quot;headerlink&quot; title=&quot;tldr;&quot;&gt;&lt;/a&gt;tldr;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;docker images&lt;/code&gt; 查看当前本地所有的镜像&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker ps&lt;/code&gt;   当前所有创建的容器状态&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker pull image_name&lt;/code&gt; 从官方仓库拉取镜像&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker exec -it --name [container_id | container_name]  bash&lt;/code&gt;  交互式连接一个正在运行的容器&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker rm container_id&lt;/code&gt;   删除一个容器&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker [start|stop|restart] container_id&lt;/code&gt;   启动、停止、重启一个容器&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="tool" scheme="https://sonky.cn/categories/tool/"/>
+    
+    
+      <category term="tool" scheme="https://sonky.cn/tags/tool/"/>
+    
+  </entry>
   
   <entry>
     <title>Vim开发环境</title>
