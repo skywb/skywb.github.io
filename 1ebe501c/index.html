@@ -112,6 +112,12 @@
 <p>如果找不到pip命令， 一种原因是没有安装python，另一种是没将pip路径添加到path</p>
 <p>自己还遇到了一种情况就是，在windows下，使用pip安装了之后，能找到这个程序，却找不多conan命令，就是找不到conan.exe可执行程序</p>
 <p>这种情况一般是没将pip安装后的可执行程序的目录添加到path里， 用everything搜一下conan.exe在哪，把路径添加进去就好了。</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>​    Conan 会在第一次启动时自动配置好默认的 Profile 和 Remote 设置。它的配置以及本地的二进制仓库均存储在用户目录下<code>~/.conan/</code>中（Windows上，是<code>%USERPROFILE%\.conan\</code>）。</p>
+<p>其中用户配置文件为<code>conan.conf</code>，通常情况下无需修改，但当需要设置代理时，可以对其进行编辑。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[proxies]</span><br><span class="line">http = ####代理地址</span><br><span class="line">https = ####代理地址</span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="包管理"><a href="#包管理" class="headerlink" title="包管理"></a>包管理</h2><p>官方文档中给出了一个项目demo， 顺便借助这个demo记录一下基本的使用。</p>
 <h3 id="查找本地库"><a href="#查找本地库" class="headerlink" title="查找本地库"></a>查找本地库</h3><p><code>conan search</code>   可以查看本地已经缓存过的库有哪些</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Existing package recipes:</span><br><span class="line"></span><br><span class="line">boost/1.69.0</span><br><span class="line">bzip2/1.0.8</span><br><span class="line">openssl/1.0.2t</span><br><span class="line">poco/1.10.0</span><br><span class="line">zlib/1.2.11</span><br></pre></td></tr></table></figure>

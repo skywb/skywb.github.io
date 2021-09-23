@@ -97,7 +97,24 @@
 
 
 
-<h2 id="容器创建"><a href="#容器创建" class="headerlink" title="容器创建"></a>容器创建</h2><p>容器创建有两种方式</p>
+<h2 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h2><p><code>docker run [OPTIONS] IMAGE [COMMAND] [ARG...]</code></p>
+<ul>
+<li><p>docker run -it image_id –name define_name bash</p>
+<p>run之后 容器就已经启动了</p>
+</li>
+<li><p>docker 挂载宿主机目录</p>
+<p><code>docker run -it -v [宿主机目录]:[容器目录] --name [容器名] [完整镜像名 或者 镜像id] bash</code></p>
+</li>
+</ul>
+<h2 id="启动与登陆"><a href="#启动与登陆" class="headerlink" title="启动与登陆"></a>启动与登陆</h2><ul>
+<li><p>docker start CONTAINER_ID</p>
+<p>启动一个容器</p>
+</li>
+<li><p>docker exec -it name|container_id  bash</p>
+<p>交互式连接容器</p>
+</li>
+</ul>
+<h2 id="创建镜像"><a href="#创建镜像" class="headerlink" title="创建镜像"></a>创建镜像</h2><p>容器创建有两种方式</p>
 <ul>
 <li>登陆容器，配置之后commit</li>
 <li>通过dockerfile 创建   </li>
